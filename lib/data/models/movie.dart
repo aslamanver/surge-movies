@@ -1,4 +1,6 @@
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:surge_movies/utils/extensions.dart';
+import 'package:surge_movies/secrets/secrets.dart' as secrets;
 
 class Movie {
   final bool adult;
@@ -34,6 +36,12 @@ class Movie {
   });
 
   factory Movie.fromMap(Map<String, dynamic> map) {
+    // Caching image
+    // if (map['poster_path'] != null) {
+    //   DefaultCacheManager().getFileStream(
+    //     '${secrets.imageEndpoint}${map['poster_path']}',
+    //   );
+    // }
     return Movie(
       id: map['id'] as num,
       adult: asBool(map['adult']),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:surge_movies/utils/extensions.dart';
 
 class MessageListTileWidget extends StatelessWidget {
-  final Exception? exception;
+  final String? message;
 
   const MessageListTileWidget({
     Key? key,
-    this.exception,
+    this.message,
   }) : super(key: key);
 
   @override
@@ -31,7 +30,7 @@ class MessageListTileWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Text(
-            'Error: ${exception?.getUserMessage()}',
+            '$message',
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 16.0,

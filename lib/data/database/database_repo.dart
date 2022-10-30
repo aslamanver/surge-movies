@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:surge_movies/data/models/movie.dart';
@@ -25,7 +23,7 @@ class DatabaseRepo {
         return db.execute(
           '''
           CREATE TABLE movies(
-            id INTEGER PRIMARY KEY, 
+            id INTEGER PRIMARY KEY,
             adult BOOLEAN,
             overview TEXT,
             release_date TEXT,
@@ -38,7 +36,8 @@ class DatabaseRepo {
             video BOOLEAN,
             vote_average INTEGER,
             poster_path TEXT,
-            backdrop_path TEXT
+            backdrop_path TEXT,
+            timestamp INTEGER
           )
           ''',
         );
@@ -48,30 +47,44 @@ class DatabaseRepo {
   }
 
   Future<void> insertMovie(Movie movie) async {
+    //
     final db = await database;
     await db.insert(
       'movies',
-      movie.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
+      {
+        'timestamp': DateTime.now().millisecondsSinceEpoch,
+        ...movie.toMap(),
+      },
+      conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
 
-  insertMovies(List<Movie> movies) {
-    for (var movie in movies) {
-      insertMovie(movie);
+  Future<void> insertMovies(List<Movie> movies) async {
+    for (int i = 0; i < movies.length; i++) {
+      await insertMovie(movies[i]);
     }
   }
 
-  Future<List<Movie>> movies() async {
+  Future<List<Movie>> movies({int page = 1}) async {
     final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('movies');
+    final List<Map<String, dynamic>> maps = await db.query(
+      'movies',
+      orderBy: 'timestamp ASC',
+      limit: 20,
+      offset: (page - 1) * 20,
+    );
     return List.generate(maps.length, (i) {
       return Movie.fromMap(maps[i]);
     });
   }
 
   Future<void> close() async {
-    final database = await instance.database;
-    database.close();
+    final db = await instance.database;
+    db.close();
+  }
+
+  Future<void> clear() async {
+    final db = await instance.database;
+    db.execute('delete from movies');
   }
 }
