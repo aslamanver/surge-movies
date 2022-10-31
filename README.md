@@ -4,7 +4,7 @@ Surge Movies is a mobile app that let you explore the best-rated movies in the w
 
 ![](assets/icon.png)
 
-Explore Movies - [surge-movies](https://surge-movies.lk) | [Create Issue](https://github.com/aslamanver/surge-movies/issues/new)
+[surge-movies](https://aslamanver.github.io/surge-movies/) | [Create Issue](https://github.com/aslamanver/surge-movies/issues/new)
 
 [![Build Status](https://travis-ci.com/aslamanver/surge-movies.svg?branch=master)](https://travis-ci.com/aslamanver/surge-movies)
 
@@ -26,7 +26,7 @@ Explore Movies - [surge-movies](https://surge-movies.lk) | [Create Issue](https:
 
 2. Run `cd surge-movies`
 
-3. Replace API_KEY that obrained from `https://www.themoviedb.org`
+3. Replace API_KEY that obrained from [https://www.themoviedb.org](https://www.themoviedb.org)
 
 4. Run `echo "const apiKey = 'YOUR_API_KEY';" | cat > lib/secrets/keys.dart`
 
