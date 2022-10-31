@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const PopupMenuItem<int>(
                   value: 1,
-                  child: Text('Stop Timer'),
+                  child: Text('DEV'),
                 ),
               ],
             ),
