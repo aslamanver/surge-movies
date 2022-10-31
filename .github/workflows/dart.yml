@@ -23,6 +23,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.0.5'
+    - run: echo "const apiKey = 'YOUR_API_KEY';" | cat > lib/secrets/keys.dart
     - run: flutter pub get
     - run: flutter test
     - run: flutter build apk
