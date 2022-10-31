@@ -29,12 +29,11 @@ Surge Movies is a mobile app that let you explore the best-rated movies in the w
 > [![Build Status](https://github.com/aslamanver/surge-movies/actions/workflows/dart.yml/badge.svg)](https://github.com/aslamanver/surge-movies/actions)
 If the build status is passing, there is no error with any build configurations and dependencies.
 
-
-1. Clone the projest `git clone git@github.com:aslamanver/surge-movies.git`
+1. Clone the project `git clone git@github.com:aslamanver/surge-movies.git`
 
 2. Run `cd surge-movies`
 
-3. Replace API_KEY that obrained from [https://www.themoviedb.org](https://www.themoviedb.org)
+3. Replace API_KEY obtained from [https://www.themoviedb.org](https://www.themoviedb.org)
 
 4. Run `echo "const apiKey = 'YOUR_API_KEY';" | cat > lib/secrets/keys.dart`
 
