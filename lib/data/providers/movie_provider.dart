@@ -93,14 +93,12 @@ class MovieProvider extends ChangeNotifier {
   }
 
   clearLocalData() async {
+    // Need to paginated query to delete all image caches from the disk.
     // final databaseMovies = await DatabaseRepo.instance.movies();
     // for (var movie in databaseMovies) {
     //   // await CachedNetworkImage.evictFromCache(
     //   //   '${secrets.imageEndpoint}${movie.posterPath}',
     //   // );
-    //   DefaultCacheManager().removeFile(
-    //     '${secrets.imageEndpoint}${movie.posterPath}',
-    //   );
     // }
     networkStatus(NetworkTaskStatus.loading);
     // DefaultCacheManager().emptyCache();

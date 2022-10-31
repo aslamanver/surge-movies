@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:surge_movies/data/models/movie.dart';
 import 'package:surge_movies/pages/home/widgets/vote_indicator.dart';
 import 'package:surge_movies/secrets/secrets.dart' as secrets;
+import 'package:url_launcher/url_launcher.dart';
 
 class MovieListTile extends StatelessWidget {
   final int index;
@@ -19,7 +20,7 @@ class MovieListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
-        height: 200,
+        height: 220,
         decoration: BoxDecoration(
           color: const Color(0xFF292B37),
           borderRadius: BorderRadius.circular(10),
@@ -37,26 +38,6 @@ class MovieListTile extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(5),
-                  // child: FutureBuilder(
-                  //   future: DefaultCacheManager().getFileFromCache(
-                  //     '${secrets.imageEndpoint}${movie.posterPath}',
-                  //   ),
-                  //   builder: (context, snapshot) {
-                  //     if (snapshot.hasData && snapshot.data != null) {
-                  //       return Image.file(snapshot.data!.file);
-                  //     } else {
-                  //       return Image.asset('placeholder.png');
-                  //       // return CachedNetworkImage(
-                  //       //   errorWidget: (context, url, error) =>
-                  //       //       Image.asset('placeholder.png'),
-                  //       //   placeholder: (context, url) =>
-                  //       //       Image.asset('placeholder.png'),
-                  //       //   fadeInDuration: const Duration(milliseconds: 30),
-                  //       //   imageUrl: '${secrets.imageEndpoint}${movie.posterPath}',
-                  //       // );
-                  //     }
-                  //   },
-                  // ),
                   child: CachedNetworkImage(
                     errorWidget: (context, url, error) =>
                         Image.asset('placeholder.png'),
@@ -150,6 +131,24 @@ class MovieListTile extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.w300,
                       ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse('https://google.com/search?q=${movie.title}'),
+                      ),
+                      child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 5),
+                          child: Text(
+                            'Browse More',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.lightBlue,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          )),
                     ),
                   ],
                 ),

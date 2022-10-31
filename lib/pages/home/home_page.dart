@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:surge_movies/data/data.dart';
 import 'package:surge_movies/pages/home/widgets/widgets.dart';
+import 'package:surge_movies/pages/widgets/custom_widgets.dart';
 import 'package:surge_movies/utils/extensions.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,14 +22,25 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    //
     movieProvider = Provider.of<MovieProvider>(context, listen: false);
+
+    // Listen to internet connectivity changes
     movieProvider.activateConnectivityListener();
+
+    // Call the HTTP/Database repository `getData()` method to retrieve the API data
     movieProvider.getData();
+
+    // Init the widget state
     super.initState();
+
+    /* Listen to the ListView Scroll Controller to be notified when the user scrolled to 
+    bottom in order to call the next page */
     scrollController.addListener(() {
       if (scrollController.position.maxScrollExtent ==
               scrollController.offset &&
           movieProvider.networkTaskStatus != NetworkTaskStatus.loading) {
+        // Call the `getData()` method to retrieve next page data
         movieProvider.getData(page: movieProvider.page + 1);
       }
     });
@@ -36,8 +48,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
+    // Dispose the ListView Scroll Controller
     scrollController.dispose();
+
+    // Dispose the internet connectivity listener
     movieProvider.deactivateConnectivityListener();
+
+    // Destroy the widget
     super.dispose();
   }
 
@@ -47,36 +64,10 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color(0xFF0F111D),
       appBar: AppBar(
         bottom: Provider.of<MovieProvider>(context).isOffline
-            ? PreferredSize(
-                preferredSize: const Size.fromHeight(80),
-                child: Container(
-                    decoration: BoxDecoration(
-                      color: ColorPalette.secondary,
-                      boxShadow: [
-                        BoxShadow(
-                          color: ColorPalette.primary.withOpacity(0.8),
-                          spreadRadius: 2,
-                          blurRadius: 6,
-                        )
-                      ],
-                    ),
-                    height: 80,
-                    child: const Center(
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        'Please check your internet connection !',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )),
-              )
+            ? offlineBanner()
             : null,
         title: Text(
-          'Top Rated Movies ${Provider.of<MovieProvider>(context).movieList.length}',
+          '(${Provider.of<MovieProvider>(context).movieList.length}) Top Rated Movies',
         ),
         leading: const Icon(
           Icons.theaters,
@@ -144,18 +135,12 @@ class _HomePageState extends State<HomePage> {
                     NetworkTaskStatus.loading,
                     NetworkTaskStatus.success,
                   ].contains(movieProvider.networkTaskStatus)) {
-                    if (movieProvider.isLocalData) {
-                      return const MessageListTileWidget(
-                        message: 'That\'s all',
-                      );
-                    } else {
-                      return const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 50.0),
-                        child: Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    }
+                    return const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 50.0),
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
                   } else {
                     return MessageListTileWidget(
                       message: movieProvider.exception?.getUserMessage(),
