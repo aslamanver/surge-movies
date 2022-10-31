@@ -20,6 +20,8 @@ Surge Movies is a mobile app that let you explore the best-rated movies in the w
 
 - app-v1.0.0.apk [Download](demo/app-v1.0.0.apk)
 
+- [Demo Video])(demo/screencast.mp4)
+
 ![](demo/screencast.gif)
 
 ## Developer Contributions
