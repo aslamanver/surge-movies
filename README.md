@@ -47,5 +47,5 @@ If the build status is passing, there is no error with any build configurations 
 
 ## CI/CD
 
-1. GitHub Actions - [.github/workflows/dart.yml](.github/workflows/dart.yml)
+1. GitHub Actions - [.github/workflows/dart.yml](https://github.com/aslamanver/surge-movies/blob/master/.github/workflows/dart.yml)
 
