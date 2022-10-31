@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     movieProvider.activateConnectivityListener();
 
     // Call the HTTP/Database repository `getData()` method to retrieve the API data
-    movieProvider.getData();
+    movieProvider.getData(page : 172);
 
     // Init the widget state
     super.initState();

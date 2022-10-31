@@ -49,7 +49,7 @@ class Movie {
           ? List<dynamic>.from(
               map['genre_ids'],
             ).map((e) => e as num).toList()
-          : map['genre_ids']
+          : map['genre_ids'].toString().isEmpty ? [] : map['genre_ids']
               .toString()
               .split(',')
               .map((e) => num.parse(e))
