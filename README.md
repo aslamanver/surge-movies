@@ -26,6 +26,10 @@ Surge Movies is a mobile app that let you explore the best-rated movies in the w
 
 ## Developer Contributions
 
+> [![Build Status](https://github.com/aslamanver/surge-movies/actions/workflows/dart.yml/badge.svg)](https://github.com/aslamanver/surge-movies/actions)
+If the build status is passing, there is no error with any build configurations and dependencies.
+
+
 1. Clone the projest `git clone git@github.com:aslamanver/surge-movies.git`
 
 2. Run `cd surge-movies`
