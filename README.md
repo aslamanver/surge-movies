@@ -6,7 +6,7 @@ Surge Movies is a mobile app that let you explore the best-rated movies in the w
 
 [surge-movies](https://aslamanver.github.io/surge-movies/) | [Create Issue](https://github.com/aslamanver/surge-movies/issues/new)
 
-[![Build Status](https://travis-ci.com/aslamanver/surge-movies.svg?branch=master)](https://travis-ci.com/aslamanver/surge-movies)
+[![Build Status](https://github.com/aslamanver/surge-movies/actions/workflows/dart.yml/badge.svg)](https://github.com/aslamanver/surge-movies/actions)
 
 <hr/>
 
