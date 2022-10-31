@@ -18,6 +18,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
+    - uses: dart-lang/setup-dart@v3
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
