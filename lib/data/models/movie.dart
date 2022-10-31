@@ -1,6 +1,4 @@
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:surge_movies/utils/extensions.dart';
-import 'package:surge_movies/secrets/secrets.dart' as secrets;
 
 class Movie {
   final bool adult;

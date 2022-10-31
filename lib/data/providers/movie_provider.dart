@@ -1,14 +1,11 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:surge_movies/data/database/database_repo.dart';
 import 'package:surge_movies/data/models/movie.dart';
 import 'package:surge_movies/data/network/network.dart';
-import 'package:surge_movies/secrets/secrets.dart' as secrets;
 
 class MovieProvider extends ChangeNotifier {
   //
