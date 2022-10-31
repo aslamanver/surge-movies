@@ -38,3 +38,7 @@ Explore Movies - [surge-movies](https://surge-movies.lk) | [Create Issue](https:
 ✓  Built build/app/outputs/flutter-apk/app-release.apk (18.7MB).
 ```
 
+## ci
+
+1. GitHub Actions - [.github/workflows/dart.yml](.github/workflows/dart.yml)
+
