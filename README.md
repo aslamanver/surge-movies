@@ -38,7 +38,7 @@ Surge Movies is a mobile app that let you explore the best-rated movies in the w
 ✓  Built build/app/outputs/flutter-apk/app-release.apk (18.7MB).
 ```
 
-## ci
+## CI/CD
 
 1. GitHub Actions - [.github/workflows/dart.yml](.github/workflows/dart.yml)
 
